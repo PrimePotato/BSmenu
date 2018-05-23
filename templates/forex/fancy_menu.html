@@ -1,0 +1,79 @@
+{% extends "blueprint.html" %}
+{% set active_main_page = 'forex' %}
+
+{% set fancy_side_bar = [
+    ('Home', 'fa-home',[]),
+    ('Submissions', 'fa-tachometer', [
+        ('Member Quality', 'fa-users'),
+        ('Data Quality', 'fa-heartbeat'),
+        ]),
+    ('MarketData', 'fa-line-chart',[
+        ('Spot', 'fa-money'),
+        ('Forwards', 'fa-money'),
+    ]),
+] -%}
+
+{% block main_content %}
+
+<div class="wrapper">
+
+    <!-- Sidebar Holder -->
+    <nav id="sidebar">
+
+
+        <div style="text-align: right">
+            <i id="sidebarCollapseBtn" class="collapse_menu--icon fa fa-fw" style="cursor: pointer;"></i>
+        </div>
+
+        <div class="sidebar-header">
+            <h3>ForexClear</h3>
+            <strong>FX</strong>
+        </div>
+
+
+        <ul class="list-unstyled components">
+            {% for menu, icon, sub_items in fancy_side_bar %}
+                <li>
+                    {% if sub_items|length >0 %}
+                        <a href="#{{ menu }}" data-toggle="collapse" aria-expanded="false" class="sidebar-submenu">
+                            <i class="fa {{ icon }}"></i>
+                            {{ menu }}
+                        </a>
+                        <ul class="collapse list-unstyled" id="{{ menu }}">
+                            {% for sub_item, sub_icon in sub_items %}
+                                <li>
+                                    <a href="#"><i class="fa {{ sub_icon }}"></i>{{ sub_item }}</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        <a href="#">
+                            <i class="fa {{ icon }}"></i>
+                            {{ menu }}
+                        </a>
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+
+    </nav>
+
+    <!-- Page Content Holder -->
+    <div id="content" style="width:100%;">
+
+    {% block forex_content %}
+    {% endblock %}
+
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#sidebarCollapseBtn').on('click', function () {
+            $('#sidebar').toggleClass('active');
+        });
+    });
+
+</script>
+
+{% endblock %}
+

@@ -28,6 +28,11 @@ def forex_market_quality_page():
     return render_template('forex/submissions/market_quality.html')
 
 
+@app.route('/forex/fancy_menu')
+def fancy_menu():
+    return render_template('forex/fancy_menu.html')
+
+
 
 if __name__ == '__main__':
     app.run('localhost', 5001)

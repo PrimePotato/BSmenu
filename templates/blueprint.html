@@ -8,34 +8,35 @@
     <meta http-equiv="x-ua-compatible" content="IE=Edge"/>
 
     <link rel="stylesheet" href="{{ url_for('static', filename='css/lch.css') }}">
-
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
     <script src="https://d3js.org/d3.v5.min.js"></script>
 
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/fancy_menu.css') }}">
+
 </head>
 <body>
-
-{% set main_nav_bar = [
-    (url_for('home_page'), 'index', 'Home'),
-    (url_for('forex_home_page'), 'forex', 'Forex'),
-    (url_for('home_page'), 'rates', 'Rates')
-] -%}
-
-
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-    <a class="navbar-brand" href="#">LCH</a>
-    <ul class="nav navbar-nav">
-        {% for url, id, txt in main_nav_bar %}
-            <li class= 'nav-link{% if id == active_main_page %} active {% endif %}'>
-                <a class="nav-link" href="{{ url }}">{{ txt }}</a>
-            </li>
-        {% endfor %}
-    </ul>
-</nav>
-
+{##}
+{#{% set main_nav_bar = [#}
+{#    (url_for('home_page'), 'index', 'Home'),#}
+{#    (url_for('forex_home_page'), 'forex', 'Forex'),#}
+{#    (url_for('home_page'), 'rates', 'Rates')#}
+{#] -%}#}
+{##}
+{##}
+{#<nav class="navbar navbar-expand-sm bg-dark navbar-dark">#}
+{#    <a class="navbar-brand" href="#">LCH</a>#}
+{#    <ul class="nav navbar-nav">#}
+{#        {% for url, id, txt in main_nav_bar %}#}
+{#            <li class= 'nav-link{% if id == active_main_page %} active {% endif %}'>#}
+{#                <a class="nav-link" href="{{ url }}">{{ txt }}</a>#}
+{#            </li>#}
+{#        {% endfor %}#}
+{#    </ul>#}
+{#</nav>#}
 
 {% block main_content %}
 {% endblock %}
