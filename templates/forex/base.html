@@ -1,0 +1,83 @@
+{% extends "blueprint.html" %}
+{% set active_main_page = 'forex' %}
+
+{% set forex_nav_bar = [
+
+    (url_for('forex_submissions_page'), 'submissions', 'Submission Monitor', [
+        (url_for('forex_member_quality_page'), 'subs_member', "Member Quality"),
+        (url_for('forex_market_quality_page'), 'subs_market', "Markets Overview"),
+     ]),
+
+    (url_for('forex_home_page'), 'mis_analysis', 'MIS Analysis', [
+        (url_for('forex_home_page'), 'todays', "Today's Data"),
+        (url_for('forex_home_page'), 'historical', "Historical Data"),
+        (url_for('forex_home_page'), 'dtcc_analysis', 'DTCC Analysis'),
+        (url_for('forex_home_page'), 'mis_data_control', 'Database Control'),
+     ]),
+
+    (url_for('forex_home_page'), 'mkt_data', 'Market Data', [
+        (url_for('forex_home_page'), 'mkt_summary', 'Summary'),
+        (url_for('forex_home_page'), 'spot', 'Spot'),
+        (url_for('forex_home_page'), 'fwds', 'Fwds'),
+        (url_for('forex_home_page'), 'opts', 'Options'),
+        (url_for('forex_home_page'), 'submissions', 'Submissions'),
+     ]),
+
+    (url_for('forex_home_page'), 'risk_analysis', 'Risk Analysis', [
+        (url_for('forex_home_page'), 'risk_summary', 'Summary'),
+        (url_for('forex_home_page'), 'risk_dfam', 'DFAM'),
+        (url_for('forex_home_page'), 'risk_imm', 'IMM'),
+        (url_for('forex_home_page'), 'risk_greek', 'Greeks'),
+     ]),
+
+    (url_for('forex_home_page'), 'docs', 'Documentation', None),
+
+] -%}
+
+{% block main_content %}
+
+    <div class="container-fluid">
+
+        <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#lch_sidebar">
+            Collapse
+        </button>
+
+        <div class="row h-100">
+
+                <nav class="col-sm-2 sidebar side_bar collapse show width"  id="lch_sidebar">
+
+                    <ul class="nav nav-pills flex-column">
+                        {% for url, id, txt, children in forex_nav_bar %}
+                            <li class="nav-item">
+                                <a class="nav-link {% if id == forex_active_page %} active {% endif %}"
+                                   href="{{ url }}">{{ txt }}</a>
+                                {% if children and id == forex_active_page %}
+                                    <ul class="sub_list_item nav nav-pills flex-column">
+                                        {% for ch_url, ch_id, ch_txt in children %}
+                                            </li>
+                                            <li class="nav-item">
+                                            <a class="nav-link {% if ch_id == forex_active_sub_page %} active{% endif %}"
+                                               href="{{ ch_url }}">{{ ch_txt }}</a>
+                                        {% endfor %}
+                                    </ul>
+                                {% endif %}
+                            </li>
+                        {% endfor %}
+                    </ul>
+
+
+                </nav>
+
+
+            <main class="col-sm-10 ml-auto">
+                {% block forex_content %}
+                {% endblock %}
+            </main>
+
+        </div>
+
+    </div>
+
+{% endblock %}
+
+*

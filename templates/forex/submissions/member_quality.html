@@ -1,0 +1,62 @@
+{% extends "forex/base.html" %}
+{% set forex_active_page = "submissions" %}
+{% set forex_active_sub_page = "subs_member" %}
+
+{% block forex_content %}
+
+    <div style="padding: 10px;">
+        <div class="row fxc_title">
+            Member Z-Scores Summary
+        </div>
+
+        <div class="row fxc_gfx">
+            <div class="col-sm-6">
+                <div id="member_submissions">
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div id="histogram">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/mmm_summary_gfx_new.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/histogram.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/data_point_gfx.js') }}"></script>
+
+    <script>
+
+        let qntScale = d3.scaleQuantile()
+            .domain([0, 5])
+            .range(d3.schemeRdYlGn[11].reverse());
+
+        let colourScale = d => qntScale(Math.abs(d));
+
+        let sum_gfx = new mmm_summary_gfx(
+            'member_submissions',
+            colourScale,
+            ["min", "mean", "max"],
+            'member'
+        );
+
+        let hist = new Histogram("histogram");
+
+        function update_data() {
+            $.ajax({
+                url: 'http://localhost:7001/member_submissions_mmm',
+                dataType: "jsonp",
+                jsonpCallback: "sum_gfx.build_summary"
+            });
+            $.ajax({
+                url: 'http://localhost:7001/test_ubf_vector',
+                dataType: "jsonp",
+                jsonpCallback: "hist.build_histogram"
+            });
+        }
+
+        update_data()
+
+    </script>
+
+{% endblock %}

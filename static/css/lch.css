@@ -1,0 +1,141 @@
+.page_title {
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-radius: 10px;
+    padding: 10px;
+    border: 2px solid black;
+    color: white;
+    background-color: grey;
+}
+
+.fxc_title {
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    padding: 10px;
+    border: 2px solid black;
+    color: white;
+    background-color: grey;
+}
+
+.fxc_gfx {
+    margin-left: 10px;
+    margin-right: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border: 2px solid;
+    border-top: 0 solid;
+}
+
+.card {
+    rx: 2;
+    ry: 2;
+}
+
+.bidline {
+    fill: green;
+    fill-opacity: 0.15;
+    stroke-opacity: 0.5;
+    stroke: green;
+    stroke-width: 2px;
+}
+
+.askline {
+    fill: none;
+    stroke-opacity: 0.5;
+    stroke: green;
+    stroke-width: 2px;
+}
+
+.title {
+    font: 15px sans-serif;
+    font-weight: bold;
+}
+
+.dumbBo {
+    stroke-width: 2px;
+}
+
+.dumbAsk {
+    fill: red;
+    fill-opacity: 0.3;
+}
+
+.dumbBid {
+    fill: blue;
+    fill-opacity: 0.3;
+}
+
+.bar {
+    fill: none;
+    stroke-opacity: 0.5;
+    stroke: none;
+    stroke-width: 1px;
+}
+
+.dumbbell {
+    fill: none;
+    stroke-opacity: 0.5;
+    stroke: none;
+    stroke-width: 2px;
+}
+
+.dumbbell:hover {
+    fill: none;
+    fill-opacity: 0.7;
+    stroke-opacity: 0.5;
+    stroke: orange;
+    stroke-width: 2px;
+}
+
+.sub_list_item {
+    margin-left: 15px;
+    color: grey;
+}
+
+.side_bar {
+    /*background: lightgrey;*/
+    border: 2px;
+}
+
+div.tooltip {
+    box-shadow: 3px 3px 1px grey;
+    position: absolute;
+    text-align: center;
+    width: 150px;
+    height: 50px;
+    padding: 2px;
+    border: 1px solid grey;
+    font: 10px sans-serif;
+    background: white;
+    border-radius: 8px;
+    pointer-events: none;
+}
+
+.collapse {
+  visibility: hidden;
+}
+.collapse.show {
+  visibility: visible;
+  display: block;
+}
+.collapsing {
+  position: relative;
+  height: 0;
+  overflow: hidden;
+  -webkit-transition-property: height, visibility;
+  transition-property: height, visibility;
+  -webkit-transition-duration: 0.35s;
+  transition-duration: 0.35s;
+  -webkit-transition-timing-function: ease;
+  transition-timing-function: ease;
+}
+.collapsing.width {
+  -webkit-transition-property: width, visibility;
+  transition-property: width, visibility;
+  width: 0;
+  height: auto;
+}

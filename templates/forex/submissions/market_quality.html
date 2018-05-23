@@ -1,0 +1,146 @@
+{% extends "forex/base.html" %}
+{% set forex_active_page = "submissions" %}
+{% set forex_active_sub_page = "subs_market" %}
+
+{% block forex_content %}
+
+    <div class="row fxc_title">
+        Spot Data Submissions
+    </div>
+
+    <div class="row fxc_gfx">
+        <div class="col-sm-6">
+            <div id="fxs_summary_chart">
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div id="fxs_dets">
+            </div>
+        </div>
+    </div>
+
+    <div class="row fxc_title">
+        Forward Point Submissions
+    </div>
+    <div class="row fxc_gfx">
+        <div class="col-sm-6">
+            <div id="fxc_summary_chart">
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div id="fxc_dets">
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row fxc_title">
+        Vol Submissions
+    </div>
+    <div class="row fxc_gfx">
+        <div class="col-sm-5">
+            <div id="vol_summary_chart">
+            </div>
+        </div>
+
+        <div class="col-sm-1">
+            <label for="sel2">Tenor:</label>
+            <select class="form-control form-control-sm" id="tenor" onchange="update_data()">
+                <option>1W</option>
+                <option>1M</option>
+                <option>2M</option>
+                <option>3M</option>
+                <option>6M</option>
+            </select>
+            <label for="sel2">Vol Type:</label>
+            <select class="form-control form-control-sm" id="vol_type" onchange="update_data()">
+                <option>50ATM</option>
+                <option>25RR</option>
+                <option>10RR</option>
+                <option>25FLY</option>
+                <option>10FLY</option>
+            </select>
+        </div>
+
+        <div class="col-sm-5">
+            <div id="vol_dets">
+            </div>
+        </div>
+
+    </div>
+
+    <script src="{{ url_for('static', filename='js/fxs_summary_gfx.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/fxc_summary_gfx.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/mmm_summary_gfx_new.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/data_point_gfx.js') }}"></script>
+
+    <script>
+
+        let dpg_fxs = new data_point_gfx('fxs_dets');
+        let fsg = new mmm_summary_gfx('fxs_summary_chart');
+        fsg.on_click = d => show_fxs_dets(d.pair);
+
+        let dpg_fxc = new data_point_gfx('fxc_dets');
+        let fcg = new fxc_summary_gfx('fxc_summary_chart');
+        fcg.on_click = d => show_fxc_dets(d.PAIR, d.TENOR_PT);
+
+        let dpg_fvol = new data_point_gfx('vol_dets');
+        let fvg = new mmm_summary_gfx('vol_summary_chart', [2, 5]);
+        fvg.on_click = d => show_fxvol_dets(d.pair);
+
+        function update_data() {
+            $.ajax({
+                url: 'http://localhost:7001/fxs_sub_report',
+                dataType: "jsonp",
+                jsonpCallback: "fsg.build_summary"
+            });
+            $.ajax({
+                url: 'http://localhost:7001/fxc_sub_report',
+                dataType: "jsonp",
+                jsonpCallback: "fcg.build_fxc_dp_summary"
+            });
+            $.ajax({
+                url: 'http://localhost:7001/fvol_sub_report',
+                dataType: "jsonp",
+                jsonpCallback: "fvg.build_summary"
+            });
+        }
+
+        function show_fxs_dets(pair) {
+            console.log(pair);
+            $.ajax({
+                url: 'http://localhost:7001/data_point_submissions',
+                dataType: "jsonp",
+                jsonpCallback: "dpg_fxs.data_pt_sub_chart",
+                data: {'inst_type': 'FXS', 'pair': pair, 'tenor': '', 'vol_type': ''}
+            });
+        }
+
+        function show_fxc_dets(pair, tenor) {
+            console.log(pair, tenor);
+            $.ajax({
+                url: 'http://localhost:7001/data_point_submissions',
+                dataType: "jsonp",
+                jsonpCallback: "dpg_fxc.data_pt_sub_chart",
+                data: {'inst_type': 'FXS', 'pair': pair, 'tenor': tenor, 'vol_type': ''}
+            });
+        }
+
+        function show_fxvol_dets(pair) {
+            let tenor = $('#tenor').val();
+            let vol_type = $('#vol_type').val();
+            console.log(pair, tenor);
+            $.ajax({
+                url: 'http://localhost:7001/data_point_submissions',
+                dataType: "jsonp",
+                jsonpCallback: "dpg_fvol.data_pt_sub_chart",
+                data: {'inst_type': 'FVOL', 'pair': pair, 'tenor': tenor, 'vol_type': vol_type}
+            });
+        }
+
+        update_data()
+
+    </script>
+
+
+{% endblock %}
