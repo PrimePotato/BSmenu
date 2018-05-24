@@ -1,10 +1,15 @@
 class Histogram {
     constructor(id) {
         this.frame = {width: 500, height: 300, margin: 50};
+        let wdt= this.frame.width + 2 * this.frame.margin;
+        let hgt = this.frame.height + 2 * this.frame.margin;
+
         this.svg = d3.select("#"+id)
             .append("svg")
-            .attr("width", this.frame.width + 2 * this.frame.margin)
-            .attr("height", this.frame.height + 2 * this.frame.margin)
+            .attr("width", "100%")
+            .attr("height", "100%")
+            .attr('viewBox', "0 0 " + wdt + " " + hgt)
+            .attr("version", "1.1")
             .attr("transform", "translate(" + this.frame.margin + "," + this.frame.margin + ")");
         this.svg.append("g").attr("class", "xAxis");
         this.svg.append("g").attr("class", "yAxis");

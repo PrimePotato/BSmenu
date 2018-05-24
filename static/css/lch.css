@@ -1,127 +1,130 @@
 .page_title {
-    margin-top: 10px;
-    margin-left: 10px;
-    margin-right: 10px;
-    border-radius: 10px;
-    padding: 10px;
-    border: 2px solid black;
-    color: white;
-    background-color: grey;
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  /*border-radius: 2px;*/
+  padding: 10px;
+  border: none;
+  color: white;
+  background-color: grey;
 }
 
 .fxc_title {
-    margin-top: 10px;
-    margin-left: 10px;
-    margin-right: 10px;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    padding: 10px;
-    border: 2px solid black;
-    color: white;
-    background-color: grey;
+  margin-left: 10px;
+  margin-right: 10px;
+  position: relative;
+  width: 250px;
+  top: 10px;
+  left: 10px;
+  padding: 10px;
+  border: none;
+  color: white;
+  background-color: grey;
+  border-radius: 1px;
+  box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .fxc_gfx {
-    margin-left: 10px;
-    margin-right: 10px;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    border: 2px solid;
-    border-top: 0 solid;
+  margin-left: 10px;
+  margin-right: 10px;
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .card {
-    rx: 2;
-    ry: 2;
+  rx: 2;
+  ry: 2;
 }
 
 .bidline {
-    fill: green;
-    fill-opacity: 0.15;
-    stroke-opacity: 0.5;
-    stroke: green;
-    stroke-width: 2px;
+  fill: green;
+  fill-opacity: 0.15;
+  stroke-opacity: 0.5;
+  stroke: green;
+  stroke-width: 2px;
 }
 
 .askline {
-    fill: none;
-    stroke-opacity: 0.5;
-    stroke: green;
-    stroke-width: 2px;
+  fill: none;
+  stroke-opacity: 0.5;
+  stroke: green;
+  stroke-width: 2px;
 }
 
 .title {
-    font: 15px sans-serif;
-    font-weight: bold;
+  font: 15px sans-serif;
+  font-weight: bold;
 }
 
 .dumbBo {
-    stroke-width: 2px;
+  stroke-width: 2px;
 }
 
 .dumbAsk {
-    fill: red;
-    fill-opacity: 0.3;
+  fill: red;
+  fill-opacity: 0.3;
 }
 
 .dumbBid {
-    fill: blue;
-    fill-opacity: 0.3;
+  fill: blue;
+  fill-opacity: 0.3;
 }
 
 .bar {
-    fill: none;
-    stroke-opacity: 0.5;
-    stroke: none;
-    stroke-width: 1px;
+  fill: none;
+  stroke-opacity: 0.5;
+  stroke: none;
+  stroke-width: 1px;
 }
 
 .dumbbell {
-    fill: none;
-    stroke-opacity: 0.5;
-    stroke: none;
-    stroke-width: 2px;
+  fill: none;
+  stroke-opacity: 0.5;
+  stroke: none;
+  stroke-width: 2px;
 }
 
 .dumbbell:hover {
-    fill: none;
-    fill-opacity: 0.7;
-    stroke-opacity: 0.5;
-    stroke: orange;
-    stroke-width: 2px;
+  fill: none;
+  fill-opacity: 0.7;
+  stroke-opacity: 0.5;
+  stroke: orange;
+  stroke-width: 2px;
 }
 
 .sub_list_item {
-    margin-left: 15px;
-    color: grey;
+  margin-left: 15px;
+  color: grey;
 }
 
 .side_bar {
-    /*background: lightgrey;*/
-    border: 2px;
+  /*background: lightgrey;*/
+  border: 2px;
 }
 
 div.tooltip {
-    box-shadow: 3px 3px 1px grey;
-    position: absolute;
-    text-align: center;
-    width: 150px;
-    height: 50px;
-    padding: 2px;
-    border: 1px solid grey;
-    font: 10px sans-serif;
-    background: white;
-    border-radius: 8px;
-    pointer-events: none;
+  box-shadow: 3px 3px 1px grey;
+  position: absolute;
+  text-align: center;
+  width: 150px;
+  height: 50px;
+  padding: 2px;
+  border: 1px solid grey;
+  font: 10px sans-serif;
+  background: white;
+  border-radius: 8px;
+  pointer-events: none;
 }
 
 .collapse {
   visibility: hidden;
 }
+
 .collapse.show {
   visibility: visible;
   display: block;
 }
+
 .collapsing {
   position: relative;
   height: 0;
@@ -133,6 +136,7 @@ div.tooltip {
   -webkit-transition-timing-function: ease;
   transition-timing-function: ease;
 }
+
 .collapsing.width {
   -webkit-transition-property: width, visibility;
   transition-property: width, visibility;

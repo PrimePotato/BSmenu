@@ -1,22 +1,26 @@
 class mmm_summary_gfx {
-    constructor(id, colorScale, headings = ["min", "med", "max"], index='pair') {
-        this.index=index;
+    constructor(id, colorScale, headings = ["min", "med", "max"], index = 'pair') {
+        this.index = index;
         this.colorScale = colorScale;
         this.headings = headings;
         this.margin = {top: 30, right: 10, bottom: 10, left: 100};
         this.width = 400;
         this.height = 300;
 
+        let hgt = this.height + this.margin.bottom + this.margin.top;
+        let wdt = this.width + this.margin.left + this.margin.right;
+
         this.svg = d3.select("#" + id).append("svg")
-            .attr("width", this.width + this.margin.left + this.margin.right)
-            .attr("height", this.height + this.margin.bottom + this.margin.top);
+            .attr("version", "1.1")
+            .attr('viewBox', "0 0 " + wdt + " " + hgt)
+            .attr('width', '100%')
+            .attr("height", '100%')
+            .attr('preserveAspectRatio', "xMidYMid meet");
 
         this.g = this.svg.append("g")
             .attr("transform", "translate(" + this.margin.left + "," + this.margin.top + ")");
-
         this.g.append("g").attr("class", "xAxis");
         this.g.append("g").attr("class", "yAxis");
-
         this.xScale = d3.scaleBand().range([0, this.width]);
         this.yScale = d3.scaleBand().range([this.height, 0]);
     }

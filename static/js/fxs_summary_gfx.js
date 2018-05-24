@@ -4,9 +4,14 @@ class fxs_summary_gfx {
         this.width = 400;
         this.height = 300;
 
+        let hgt = this.height + this.margin.bottom + this.margin.top;
+        let wdt = this.width + this.margin.left + this.margin.right;
+
         this.svg = d3.select("#"+id).append("svg")
-            .attr("width", this.width + this.margin.left + this.margin.right)
-            .attr("height", this.height + this.margin.bottom + this.margin.top);
+            .attr("width", "100%")
+            .attr("height", "100%")
+            .attr('viewBox', "0 0 " + wdt + " " + hgt)
+            .attr('preserveAspectRatio', "xMidYMid meet");
 
         this.g = this.svg.append("g")
             .attr("transform", "translate(" + this.margin.left + "," + this.margin.top + ")");
