@@ -50,7 +50,7 @@ class fxc_summary_gfx {
         let trans = d3.transition()
             .duration(750);
 
-        let cards = this.g.selectAll(".card")
+        let cards = this.g.selectAll(".lch_card")
             .data(json);
 
         cards.transition(trans)
@@ -62,7 +62,7 @@ class fxc_summary_gfx {
 
         let card = cards.enter()
             .append('rect')
-            .attr('class', 'card')
+            .attr('class', 'lch_card')
             .attr('x', d => this.xScale(d.TENOR_PT) + card_size.padding)
             .attr('y', d => this.yScale(d.PAIR) + card_size.padding)
             .attr('width', card_size.width - 2 * card_size.padding)

@@ -76,10 +76,9 @@
 
   <script>
 
-      let qntScale = d3.scaleQuantile()
+      let spot_colourScale = d3.scaleQuantile()
           .domain([8, 15])
           .range(d3.schemeRdYlGn[11]);
-      let spot_colourScale = d => qntScale(Math.abs(d));
 
       let dpg_fxs = new data_point_gfx('fxs_dets');
       let fsg = new mmm_summary_gfx('fxs_summary_chart', spot_colourScale);
@@ -89,10 +88,9 @@
       let fcg = new fxc_summary_gfx('fxc_summary_chart');
       fcg.on_click = d => show_fxc_dets(d.PAIR, d.TENOR_PT);
 
-      qntScale = d3.scaleQuantile()
+      let vol_colourScale = d3.scaleQuantile()
           .domain([3, 5])
           .range(d3.schemeRdYlGn[11]);
-      let vol_colourScale = d => qntScale(Math.abs(d));
 
       let dpg_fvol = new data_point_gfx('vol_dets');
       let fvg = new mmm_summary_gfx('vol_summary_chart', vol_colourScale);
@@ -117,7 +115,7 @@
       }
 
       function show_fxs_dets(pair) {
-          console.log(pair);
+          dpg_fxc.chart_title = 'BOB'
           $.ajax({
               url: 'http://localhost:7001/data_point_submissions',
               dataType: "jsonp",
@@ -127,7 +125,7 @@
       }
 
       function show_fxc_dets(pair, tenor) {
-          console.log(pair, tenor);
+          dpg_fxc.chart_title = 'BOB2'
           $.ajax({
               url: 'http://localhost:7001/data_point_submissions',
               dataType: "jsonp",
@@ -139,7 +137,7 @@
       function show_fxvol_dets(pair) {
           let tenor = $('#tenor').val();
           let vol_type = $('#vol_type').val();
-          console.log(pair, tenor);
+          dpg_fxc.chart_title = 'BOB3'
           $.ajax({
               url: 'http://localhost:7001/data_point_submissions',
               dataType: "jsonp",

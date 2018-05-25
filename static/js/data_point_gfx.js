@@ -3,6 +3,7 @@ class data_point_gfx {
         this.margin = {top: 35, right: 35, bottom: 35, left: 35};
         this.width = 550 - this.margin.left - this.margin.right;
         this.height = 350 - this.margin.top - this.margin.bottom;
+        this.chart_title = id;
 
         this.svg = d3.select("#" + id).append("svg")
             .attr("width", this.width + this.margin.left + this.margin.right)
@@ -25,6 +26,8 @@ class data_point_gfx {
 
 
     data_pt_sub_chart(json) {
+
+        console.log(json);
 
         let time_series = json;
         let data_set = [];
@@ -157,6 +160,13 @@ class data_point_gfx {
 
         this.g.select(".yAxis")
             .call(yAxis);
+
+        this.g.append("text")
+            .attr("class", "title")
+            .attr("x", this.width / 2)
+            .attr("y", 0 - (this.margin.top / 2))
+            .attr("text-anchor", "middle")
+            .text(this.chart_title);
 
     }
 

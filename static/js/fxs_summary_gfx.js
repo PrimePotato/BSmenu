@@ -54,12 +54,12 @@ class fxs_summary_gfx {
             padding: 0.5
         };
 
-        let cards = this.g.selectAll(".card")
+        let cards = this.g.selectAll(".lch_card")
             .data(data_set);
 
         let card = cards.enter()
             .append('g')
-            .attr('class', 'card')
+            .attr('class', 'lch_card')
             .attr("transform",
                 d => "translate(" + (this.xScale(d.key) + card_size.padding) + "," + (this.yScale(d.pair) + card_size.padding) + ")");
 

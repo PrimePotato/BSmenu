@@ -1,18 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+  <title>LCH Internal Data</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta http-equiv="x-ua-compatible" content="IE=Edge"/>
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/lch.css') }}">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/fancy_menu.css') }}">
+
 </head>
+
+<style>
+
+  .lch_dropdown {
+    border: none;
+    border-radius: 2px;
+    background: grey;
+    color: white;
+    fill: #2c2c2c;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+
+
+</style>
+
 <body>
 
-
-
-
-
-
-
-
+<div class="row">
+  <div class="col-md-6">
+    <div class="dropdown">
+      <button type="button" class="btn dropdown-toggle lch_dropdown" data-toggle="dropdown">
+        Dropdown button
+      </button>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="#">Link 1</a>
+        <a class="dropdown-item" href="#">Link 2</a>
+        <a class="dropdown-item" href="#">Link 3</a>
+      </div>
+    </div>
+  </div>
+</div>
 
 </body>
 </html>

@@ -44,12 +44,12 @@ class mmm_summary_gfx {
             padding: 0.5
         };
 
-        let cards = this.g.selectAll(".card")
+        let cards = this.g.selectAll(".lch_card")
             .data(data_set);
 
         let card = cards.enter()
             .append('g')
-            .attr('class', 'card')
+            .attr('class', 'lch_card')
             .attr("transform",
                 d => "translate(" + (this.xScale(d.key) + card_size.padding) + "," + (this.yScale(d.idx) + card_size.padding) + ")");
 
@@ -70,8 +70,7 @@ class mmm_summary_gfx {
             .attr("text-anchor", "middle")
             .text(function (d) {
                 return d.val.toFixed(2);
-            })
-            .style("fill", "white");
+            });
 
         let xAxis = d3.axisTop(this.xScale);
         this.g.select(".xAxis")
