@@ -63,7 +63,10 @@
 .lch_card text {
   fill: white;
   mix-blend-mode: difference;
+  display: table-cell;
   vertical-align: middle;
+  text-anchor: middle;
+  alignment-baseline: central;
 }
 
 .bidline {

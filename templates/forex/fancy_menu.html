@@ -2,9 +2,9 @@
 {% set active_main_page = 'forex' %}
 
 {% set fancy_side_bar = [
-    ('Home', 'fa-home', url_for('forex_market_quality_page'),[]),
+    ('Home', 'fa-home', url_for('forex_home_page'),[]),
     ('Submissions', 'fa-tachometer', url_for('forex_market_quality_page'), [
-        ('Member Quality', 'fa-users', url_for('forex_market_quality_page')),
+        ('Member Quality', 'fa-users', url_for('forex_member_quality_page')),
         ('Data Quality', 'fa-heartbeat', url_for('forex_market_quality_page')),
         ]),
     ('MarketData', 'fa-line-chart', url_for('forex_market_quality_page'),[
@@ -41,13 +41,13 @@
               </a>
               <ul class="collapse list-unstyled" id="{{ menu }}">
                 {% for sub_item, sub_icon, sub_url in sub_items %}
+                  <a href={{ sub_url }}><i class="fa {{ sub_icon }}"></i>{{ sub_item }}</a>
                   <li>
-                    <a href="#"><i class="fa {{ sub_icon }}"></i>{{ sub_item }}</a>
                   </li>
                 {% endfor %}
               </ul>
             {% else %}
-              <a href="#">
+              <a href= {{ url }}>
                 <i class="fa {{ icon }}"></i>
                 {{ menu }}
               </a>
@@ -74,7 +74,6 @@
               $('#sidebar').toggleClass('active');
           });
       });
-
   </script>
 
 {% endblock %}

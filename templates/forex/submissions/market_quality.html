@@ -43,23 +43,36 @@
       </div>
     </div>
 
+
     <div class="col-sm-1">
-      <label for="sel2">Tenor:</label>
-      <select class="form-control form-control-sm" id="tenor" onchange="update_data()">
-        <option>1W</option>
-        <option>1M</option>
-        <option>2M</option>
-        <option>3M</option>
-        <option>6M</option>
-      </select>
-      <label for="sel2">Vol Type:</label>
-      <select class="form-control form-control-sm" id="vol_type" onchange="update_data()">
-        <option>50ATM</option>
-        <option>25RR</option>
-        <option>10RR</option>
-        <option>25FLY</option>
-        <option>10FLY</option>
-      </select>
+
+      <div class="dropdown">
+        <button type="button" class="btn dropdown-toggle lch_dropdown" data-toggle="dropdown">
+          Tenor
+        </button>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="#">1W</a>
+          <a class="dropdown-item" href="#">1M</a>
+          <a class="dropdown-item" href="#">2M</a>
+          <a class="dropdown-item" href="#">2M</a>
+          <a class="dropdown-item" href="#">2M</a>
+          <a class="dropdown-item" href="#">2M</a>
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <button type="button" class="btn dropdown-toggle lch_dropdown" data-toggle="dropdown">
+          Delta
+        </button>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="#">50ATM</a>
+          <a class="dropdown-item" href="#">25RR</a>
+          <a class="dropdown-item" href="#">10RR</a>
+          <a class="dropdown-item" href="#">25FLY</a>
+          <a class="dropdown-item" href="#">10FLY</a>
+        </div>
+      </div>
+
     </div>
 
     <div class="col-sm-5">
@@ -115,7 +128,7 @@
       }
 
       function show_fxs_dets(pair) {
-          dpg_fxc.chart_title = 'BOB'
+          dpg_fxs.chart_title = pair
           $.ajax({
               url: 'http://localhost:7001/data_point_submissions',
               dataType: "jsonp",
@@ -125,7 +138,7 @@
       }
 
       function show_fxc_dets(pair, tenor) {
-          dpg_fxc.chart_title = 'BOB2'
+          dpg_fxc.chart_title = pair + " " + tenor;
           $.ajax({
               url: 'http://localhost:7001/data_point_submissions',
               dataType: "jsonp",
@@ -137,7 +150,7 @@
       function show_fxvol_dets(pair) {
           let tenor = $('#tenor').val();
           let vol_type = $('#vol_type').val();
-          dpg_fxc.chart_title = 'BOB3'
+          dpg_fvol.chart_title = pair + " " + tenor + " " + vol_type;
           $.ajax({
               url: 'http://localhost:7001/data_point_submissions',
               dataType: "jsonp",
@@ -147,6 +160,10 @@
       }
 
       update_data()
+
+      $('.dropdown a').on('click', function () {
+          $(this).parent().val($(this).text());
+      });
 
   </script>
 

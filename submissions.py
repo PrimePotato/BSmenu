@@ -33,7 +33,6 @@ def fancy_menu():
     return render_template('forex/fancy_menu.html')
 
 
-
 if __name__ == '__main__':
     app.run('localhost', 5001)
 

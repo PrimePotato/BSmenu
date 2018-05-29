@@ -65,11 +65,10 @@ class mmm_summary_gfx {
         card.append('text')
             .attr("class", "below")
             .attr("x", card_size.width / 2 + card_size.padding)
-            .attr("dy", "1.2em")
+            .attr("y", card_size.height / 2 + card_size.padding)
             .attr("font-size", 10)
-            .attr("text-anchor", "middle")
             .text(function (d) {
-                return d.val.toFixed(2);
+                return d.val.toFixed(0);
             });
 
         let xAxis = d3.axisTop(this.xScale);

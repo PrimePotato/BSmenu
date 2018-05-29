@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>LCH Internal Data</title>
     <meta charset="utf-8">
@@ -9,16 +10,22 @@
 
     <link rel="stylesheet" href="{{ url_for('static', filename='css/lch.css') }}">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
-    <script src="https://d3js.org/d3.v5.min.js"></script>
+{#    <link rel="stylesheet" href="{{ url_for('static', filename='css/fontawesome-all.css') }}">#}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+
+    <script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/popper.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/d3.v5.js') }}"></script>
 
     <link rel="stylesheet" href="{{ url_for('static', filename='css/fancy_menu.css') }}">
 
 </head>
 <body>
+
+{% block main_content %}
+{% endblock %}
+
 {##}
 {#{% set main_nav_bar = [#}
 {#    (url_for('home_page'), 'index', 'Home'),#}
@@ -37,9 +44,6 @@
 {#        {% endfor %}#}
 {#    </ul>#}
 {#</nav>#}
-
-{% block main_content %}
-{% endblock %}
 
 </body>
 </html>
